@@ -3,6 +3,7 @@ package Utils;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Optional;
 import java.util.Scanner;
 
 /**
@@ -15,6 +16,7 @@ public class IOConsole {
     private final PrintStream output;
     private AnsiTextColor textColor = AnsiTextColor.WHITE;
     private AnsiBackColor backColor = AnsiBackColor.AUTO;
+    private AnsiFormat formatting = AnsiFormat.NORMAL;
 
     public IOConsole() {
         this(System.in, System.out);
@@ -30,13 +32,44 @@ public class IOConsole {
         this.updateOutputFormat();
     }
 
+    public void setBackColorWithoutUpdate(AnsiBackColor color){
+        this.backColor = color;
+    }
+
     public void setTextColor(AnsiTextColor color){
         this.textColor = color;
         this.updateOutputFormat();
     }
 
+    public void setTextColorWithoutUpdate(AnsiTextColor color){
+        this.textColor = color;
+    }
+
+    public void setFormat(AnsiFormat format){
+        this.formatting = format;
+        this.updateOutputFormat();
+    }
+
+    public void setFormatWithoutUpdate(AnsiFormat format){
+        this.formatting = format;
+    }
+
+    public void revertAllTextFormatting(){
+        this.setFormat(AnsiFormat.NORMAL);
+    }
+
     public void updateOutputFormat(){
-        this.output.format(this.backColor.getColor() + this.textColor.getColor());
+        if(this.formatting == AnsiFormat.NORMAL){
+            this.output.format(this.formatting.getFormat());
+        } else {
+            this.output.format(this.backColor.getColor() +
+                    this.formatting.getFormat() +
+                    this.textColor.getColor());
+        }
+
+
+
+
     }
 
     public void print(String val, Object... args) {

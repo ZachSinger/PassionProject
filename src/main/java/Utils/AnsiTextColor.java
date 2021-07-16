@@ -1,9 +1,5 @@
 package Utils;
 
-/**
- * Created by leon on 7/21/2020.
- * used to create color for output of `IOConsole`
- */
 public enum AnsiTextColor {
     BLACK("\u001B[30m"),
     RED("\u001B[31m"),
