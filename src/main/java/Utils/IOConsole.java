@@ -13,6 +13,8 @@ import java.util.Scanner;
 public class IOConsole {
     private final Scanner input;
     private final PrintStream output;
+    private AnsiTextColor textColor = AnsiTextColor.WHITE;
+    private AnsiBackColor backColor = AnsiBackColor.AUTO;
 
     public IOConsole() {
         this(System.in, System.out);
@@ -21,6 +23,20 @@ public class IOConsole {
     public IOConsole(InputStream in, PrintStream out) {
         this.input = new Scanner(in);
         this.output = out;
+    }
+
+    public void setBackColor(AnsiBackColor color){
+        this.backColor = color;
+        this.updateOutputFormat();
+    }
+
+    public void setTextColor(AnsiTextColor color){
+        this.textColor = color;
+        this.updateOutputFormat();
+    }
+
+    public void updateOutputFormat(){
+        this.output.format(this.backColor.getColor() + this.textColor.getColor());
     }
 
     public void print(String val, Object... args) {
