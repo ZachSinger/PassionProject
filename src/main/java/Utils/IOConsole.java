@@ -3,7 +3,6 @@ package Utils;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.Optional;
 import java.util.Scanner;
 
 /**
@@ -66,10 +65,6 @@ public class IOConsole {
                     this.formatting.getFormat() +
                     this.textColor.getColor());
         }
-
-
-
-
     }
 
     public void print(String val, Object... args) {
