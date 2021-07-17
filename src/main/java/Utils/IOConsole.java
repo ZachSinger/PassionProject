@@ -4,6 +4,7 @@ package Utils;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author ZachSinger
@@ -13,9 +14,9 @@ import java.util.Scanner;
 public class IOConsole {
     private final Scanner input;
     private final PrintStream output;
-    private AnsiTextColor textColor = AnsiTextColor.WHITE;
-    private AnsiBackColor backColor = AnsiBackColor.AUTO;
-    private AnsiFormat formatting = AnsiFormat.NORMAL;
+    private AnsiTextColor textColor = AnsiTextColor.NONE;
+    private AnsiBackColor backColor = AnsiBackColor.NONE;
+    private AnsiFormat formatting = AnsiFormat.NONE;
 
     public IOConsole() {
         this(System.in, System.out);
@@ -64,6 +65,15 @@ public class IOConsole {
             this.output.format(this.backColor.getColor() +
                     this.formatting.getFormat() +
                     this.textColor.getColor());
+        }
+    }
+
+    public void setWait(int milliseconds){
+        try {
+            TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            this.println("Wait unsuccessful, refer to error message");
         }
     }
 

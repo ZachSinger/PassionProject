@@ -6,7 +6,9 @@ public enum AnsiFormat {
     UNDERLINE("\u001B[4m"),
     BLINK("\u001B[5m"),
     REVERSE("\u001B[7m"),
-    INVISIBLE("\u001B[8m");
+    INVISIBLE("\u001B[8m"),
+    STRIKE("\u001B[9m"),
+    NONE("");
 
     private final String formatting;
 

@@ -39,15 +39,6 @@ public class DialogueTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void getNextDialogue() {
-        Dialogue dg = new Dialogue("Leave me alone", "I said leave me alone!");
-
-        String actual = dg.getNextDialogue();
-        String expected = "I said leave me alone!";
-
-        Assert.assertEquals(actual, expected);
-    }
 
     @Test
     public void getCurrentDialogue() {

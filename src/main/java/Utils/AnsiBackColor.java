@@ -1,7 +1,6 @@
 package Utils;
 
 public enum AnsiBackColor {
-    AUTO("\u001B[0m"),
     BLACK("\u001B[40m"),
     RED("\u001B[41m"),
     GREEN("\u001B[42m"),
@@ -9,7 +8,8 @@ public enum AnsiBackColor {
     BLUE("\u001B[44m"),
     PURPLE("\u001B[45m"),
     CYAN("\u001B[46m"),
-    WHITE("\u001B[47m");
+    WHITE("\u001B[47m"),
+    NONE("");
 
     private final String color;
 
